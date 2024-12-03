@@ -16,7 +16,7 @@ import {
 } from "@/services/two-factor-confirmation";
 import { isExpired, response, signJwt } from "@/lib/utils";
 
-export const login = async (payload: z.infer<typeof loginSchema>) => {
+export const login = async (payload: z.infer<typeof loginSchema>, callbackUrl?: string | null) => {
   // Check if user input is not valid, then return an error.
   const validatedFields = loginSchema.safeParse(payload);
   if (!validatedFields.success) {
@@ -94,16 +94,16 @@ export const login = async (payload: z.infer<typeof loginSchema>) => {
   }
 
   // Then try to sign in with next-auth credentials.
-  return await signInCredentials(email, password);
+  return await signInCredentials(email, password, callbackUrl);
 };
 
 // Sign in credentials from next-auth
-export const signInCredentials = async (email: string, password: string) => {
+export const signInCredentials = async (email: string, password: string, callbackUrl?: string | null) => {
   try {
     await signIn("credentials", {
       email,
       password,
-      redirectTo: DEFAULT_LOGIN_REDIRECT,
+      redirectTo: callbackUrl || DEFAULT_LOGIN_REDIRECT,
     });
   } catch (error) {
     if (error instanceof AuthError) {
