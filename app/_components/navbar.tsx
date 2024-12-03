@@ -54,13 +54,13 @@ async function AuthNav() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <Link href="/profile">
+            <Link href="/dashboard/profile">
               Profile
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/settings">
+            <Link href="/dashboard/settings">
               Settings
               <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
             </Link>

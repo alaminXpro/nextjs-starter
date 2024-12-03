@@ -1,11 +1,11 @@
-import { currentUser } from "@/lib/auth";
-import { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Home",
-};
-
-export default async function Home() {
-  const user = await currentUser();
-  return <div>Hello {user?.name}</div>;
+const MainPage = () => {
+  return ( 
+    <div>
+      <h1>Main Page</h1>
+    </div>
+  );
 }
+ 
+export default MainPage;
