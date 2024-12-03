@@ -1,4 +1,7 @@
-export const publicRoutes: string[] = ["/verify"];
+export const publicRoutes: string[] = [
+  "/",
+  "/verify",
+];
 
 export const authRoutes: string[] = [
   "/login",
@@ -12,4 +15,4 @@ export const authRoutes: string[] = [
 
 export const apiAuthPrefix: string = "/api/auth";
 
-export const DEFAULT_LOGIN_REDIRECT: string = "/";
+export const DEFAULT_LOGIN_REDIRECT: string = "/dashboard";

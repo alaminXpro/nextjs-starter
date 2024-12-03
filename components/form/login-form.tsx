@@ -12,7 +12,7 @@ import { login } from "@/actions/login";
 import { FormInput } from "@/components/auth/form-input";
 import { toast } from "sonner";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export const LoginForm = () => {
   const router = useRouter();
@@ -25,10 +25,12 @@ export const LoginForm = () => {
       password: "",
     },
   });
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl");
 
   const handleSubmit = form.handleSubmit((values) => {
     startTransition(() => {
-      login(values)
+      login(values, callbackUrl)
         .then((data) => {
           if (!data) return;
           if (!data.success) {
